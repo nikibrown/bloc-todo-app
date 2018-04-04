@@ -7,8 +7,6 @@ function onReady() {
     event.preventDefault();
     // get the text
     let title = newToDoText.value;
-    
-    newToDoText.value;
 
     // create a new li
     let newLi = document.createElement('li');
@@ -20,7 +18,7 @@ function onReady() {
     let deleteButton = document.createElement('button');
     
     // Add text to deleteButton
-    deleteButton.textContent = "Delete";
+    deleteButton.textContent = "x";
 
     // set the input's type to checkbox
     checkbox.type = "checkbox";
@@ -32,7 +30,6 @@ function onReady() {
     newLi.appendChild(checkbox);
     
     // add the deleteButton to newLi
-    
     newLi.appendChild(deleteButton);
     
     // add the li to the ul
@@ -42,9 +39,21 @@ function onReady() {
     newToDoText.value = '';
     
     // delete todo when deleteButton is clicked
-    deleteButton.addEventListener('click', () => {
-      // move up the DOM to the parentNode and then removes the newLi where the deleteButton is clicked
-      newLi.parentNode.removeChild(newLi);
+    
+    
+    // Bloc's suggested solution 
+    // deleteButton.addEventListener('click', () => {
+    //  newLi.parentNode.removeChild(newLi);
+    // });
+    
+    // Regular function expression solution with this
+    // deleteButton.addEventListener('click', function() {
+    //   this.parentNode.remove();
+    // });
+    
+    // es6 arrow function using event.target
+    deleteButton.addEventListener('click', event => {     
+      event.target.parentNode.remove();
     });
     
   });
